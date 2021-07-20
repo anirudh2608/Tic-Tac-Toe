@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/style.css">
+    <title>TIC TAC TOE</title>
+</head>
+<style>
+    body{
+        background-image: url(../images/background.jpg);
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: fixed;
+        background-size: cover;
+        }
+</style>
+
+<body>
+    <div class="container">
+        <label>Player 1 Name :</label>
+        <input type="text" id="Name1">
+        <div class="alert" id="alert1">! Please Enter Player 1 Name.</div>
+        <label>Player 2 Name :</label>
+        <input type="text" id="Name2"> 
+        <div class="alert" id="alert2">! Please Enter Player 2 Name.</div>
+        <button onclick="getinfo()" style="bottom: 0px;">Start</button>
+        <script>
+            function getinfo(){
+                if(document.getElementById("Name1").value== ""){
+                    document.getElementById("alert1").style.display = "block";
+                }else if (document.getElementById("Name2").value==""){
+                    document.getElementById("alert2").style.display = "block";
+                }else{
+                    name2 = document.getElementById("Name2").value
+                    name1 = document.getElementById("Name1").value
+                    
+                    localStorage.setItem("player1", name1)
+                    localStorage.setItem("player2", name2)
+                    location.href='Game.html'
+                }
+            }
+        </script>
+
+    </div>
+</body>
+
+</html>

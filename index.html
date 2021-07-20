@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/style.css">
+    <!-- <script src="javascript/script.js" defer></script> -->
+    <title>TIC TAC TOE</title>
+    <style>
+        body{
+            background-image: url(images/background.jpg);
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Tic Tac Toe</h1>
+        <button OnClick=" computer()">Play with Computer</button>
+        <button OnClick=" friend() " data-game-type value="friend">Play with Friend</button>
+    </div>
+    <script>
+
+        // const type = document.querySelectorAll("[data-game-type]")
+        function computer() {
+            localStorage.setItem("type", "Computer")
+            location.href = 'Pages/Game.html'
+        }
+
+        function friend() {
+            localStorage.setItem("type", "Friend")
+            location.href = 'Pages/Game-Name.html'
+        }
+
+    </script>
+</body>
+
+</html>

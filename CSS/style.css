@@ -1,0 +1,264 @@
+@import url('https://fonts.googleapis.com/css2?family=Otomanopee+One&display=swap');
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+
+.chance_msg{
+    text-align: center;
+    top: 80px;
+    position: relative;
+    font-weight: bold;
+    font-size: 1.2rem;
+ }
+
+:root{
+    --cell-size: 100px;
+    --mark-size: calc(var(--cell-size)*0.9);
+}
+
+.board{
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    grid-template-columns: repeat(3,auto);
+}
+
+.cell{
+    width: var(--cell-size);
+    height: var(--cell-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid rgba(0,0,0,.54);
+    border-radius: 7px;
+    position: relative;
+    cursor: pointer;
+}
+
+.cell.x,
+.cell.c{
+    cursor: not-allowed;
+}
+
+.cell:first-child,
+.cell:nth-child(2),
+.cell:nth-child(3){
+    border-top: none;
+}
+
+.cell:last-child,
+.cell:nth-child(7),
+.cell:nth-child(8){
+    border-bottom: none;
+}
+
+.cell:nth-child(3n + 1){
+    border-left: none;
+}
+
+.cell:nth-child(3n + 3){
+    border-right: none;
+}
+
+.cell.x::before,
+.cell.x::after,
+.cell.c::before{
+    background-color: black;
+}
+
+
+.board.x .cell:not(.x):not(.c):hover::before,
+.board.x .cell:not(.x):not(.c):hover::after,
+.board.c .cell:not(.x):not(.c):hover::before{
+    background-color: lightgray;
+}
+
+
+.cell.x::before,
+.cell.x::after,
+.board.x .cell:not(.x):not(.c):hover::before,
+.board.x .cell:not(.x):not(.c):hover::after{
+    content: "";
+    position: absolute;
+    width: calc(var(--mark-size)*.15);
+    height: calc(var(--mark-size));
+}
+
+.cell.x::before,
+.board.x .cell:not(.x):not(.c):hover::before{
+    transform: rotate(45deg);
+    background-color: rgb(84, 84, 84);
+    border-radius: 7px;
+}
+
+.cell.x::after,
+.board.x .cell:not(.x):not(.c):hover::after{
+    transform: rotate(-45deg);
+    border-radius: 7px;
+    background-color: rgb(84, 84, 84);
+}
+
+.cell.c::before,
+.cell.c::after,
+.board.c .cell:not(.x):not(.c):hover::before,
+.board.c .cell:not(.x):not(.c):hover::after{
+    content: "";
+    border-radius: 50%;
+    position: absolute;
+}
+
+.cell.c::before,
+.board.c .cell:not(.x):not(.c):hover::before{
+    width: var(--mark-size);
+    height: var(--mark-size);
+    background-color: rgb(242, 235, 211);
+}
+
+.cell.c::after,
+.board.c .cell:not(.x):not(.c):hover::after{
+    width: calc(var(--mark-size) * .7);
+    height: calc(var(--mark-size) * .7);
+    background-color: #14bdac;
+    
+}
+
+.win{
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: none;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 5rem;
+}
+
+.win button{
+    font-size: 3rem;
+    background-color: white;
+    border: 1px solid black;
+    padding: 0.25em 0.5em;
+    cursor: pointer;
+}
+.win button:hover{
+    background-color: black;
+    color: white;
+    border-color: white;
+}
+
+.win.show{
+    display: flex;
+}
+
+
+/* CSS for Index Page */
+
+.container{
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.container button{
+    font-family: 'Otomanopee One', sans-serif;
+    margin: 3px;
+    width: 180px;
+    height: 30px;
+    bottom: 100px;
+    position: relative;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border-radius: 7px;
+    padding: 0.25em 0.5em;
+    text-align: center;
+}
+
+
+.container h1{
+    bottom: 100px;
+    position: relative;
+    font-size: 5rem;
+    margin-bottom: 0.25em;
+    text-align: center;
+}
+
+.container button:hover{
+    background-color: black;
+    color: white;
+}
+
+
+/* CSS for Name Entry Page */
+
+.container label{
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-top: 0.7em;
+}
+
+.container input[type=text]{
+    width: 270px;
+    height: 30px;
+    font-weight: bold;
+    font-size: 1rem;
+    border: none;
+    border-radius: 7px;
+    border-bottom: 4px solid black;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+/*  */
+
+.alert{
+    color: red;
+    font-weight: bold;
+    display: none;
+}
+
+@media screen and (max-width: 480px) {
+    .win{
+        font-size: 4rem;
+    }
+}
+
+
+@media screen and (max-width: 390px) {
+    .container h1{
+        font-size: 4rem;
+    }
+    .win{
+        font-size: 3rem;
+    }
+}
+
+
+@media screen and (max-width: 315px) {
+    .container h1{
+        font-size: 3.5rem;
+    }
+}
+
+@media screen and (max-width: 280px) {
+    .container h1{
+        font-size: 2rem;
+    }
+}
